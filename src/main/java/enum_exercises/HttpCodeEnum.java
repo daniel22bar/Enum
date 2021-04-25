@@ -15,12 +15,12 @@ public enum HttpCodeEnum {
    public static HttpCodeEnum getHttpHandlerByCode(int statusCode){
       HttpCodeEnum[] codes = values();
       try {
-         return codes[statusCode];
+         return codes[(statusCode/100) -1];
       }catch (Exception ex){
-         throw new IllegalStateException(statusCode + " not supported" + ex.toString());
+         throw new IllegalStateException(statusCode + " not supported" );
       }
       /*for (HttpCodeEnum code : codes) {
-         if(statusCode == code.index)
+         if(statusCode/100 == code.index)
             return code;
 
       }
